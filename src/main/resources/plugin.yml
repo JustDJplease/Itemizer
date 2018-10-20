@@ -2,9 +2,14 @@ name: ${project.name}
 version: ${project.version}
 description: ${project.description}
 
-authors: [NectarHoney]
-main: me.nectarhoney.template.Template
+authors: [NectarHoney, Baksovic]
+main: me.nectarhoney.itemizer.Itemizer
 website: https://github.com/JustDJplease/
 softdepend: []
 
 api-version: 1.13
+
+commands:
+  itemizer:
+    aliases: [modifyitem, it, ii]
+    description: ${project.description}
