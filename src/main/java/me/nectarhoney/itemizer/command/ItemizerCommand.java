@@ -210,7 +210,7 @@ public class ItemizerCommand implements CommandExecutor {
                 player.sendMessage("§6/" + label + " enchant listall §8- §eList all available enchantments");
             } else {
                 if (args[1].equalsIgnoreCase("add")) {
-                    if(args.length != 4){
+                    if (args.length != 4) {
                         player.sendMessage("§6/" + label + " enchant add <§fname§6> [§flevel§6] §8- §eAdd an enchantment");
                         return true;
                     }
@@ -243,7 +243,7 @@ public class ItemizerCommand implements CommandExecutor {
                 player.sendMessage("§6/" + label + " title <§ftitle§6> §8- §eSets the title of a book");
                 return true;
             }
-            itemizer.getItemManager().bookTitle(player, args[1]);
+            itemizer.getItemManager().bookTitle(player, args);
             return true;
         } else if (args[0].equalsIgnoreCase("author")) {
             if (!player.hasPermission("itemizer.author") && !player.isOp()) {
@@ -258,7 +258,7 @@ public class ItemizerCommand implements CommandExecutor {
                 player.sendMessage("§6/" + label + " author <§fname§6> §8- §eSets the author of a book");
                 return true;
             }
-            itemizer.getItemManager().bookAuthor(player, args[1]);
+            itemizer.getItemManager().bookAuthor(player, args);
             return true;
         } else if (args[0].equalsIgnoreCase("head")) {
             if (!player.hasPermission("itemizer.head") && !player.isOp()) {

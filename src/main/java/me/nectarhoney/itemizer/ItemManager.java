@@ -244,17 +244,25 @@ public class ItemManager {
      * Status: completed
      *
      * @param player Affected player.
-     * @param title  New title.
+     * @param args   Command arguments.
      */
-    public void bookTitle(Player player, String title) {
-        title = ChatColor.translateAlternateColorCodes('&', title);
+    public void bookTitle(Player player, String[] args) {
+        StringBuilder name = new StringBuilder();
+        for (int i = 1; i < args.length; i++) {
+            if (name.length() == 0) {
+                name.append(args[i]);
+            } else {
+                name.append(" ").append(args[i]);
+            }
+        }
+        name = new StringBuilder(ChatColor.translateAlternateColorCodes('&', name.toString()));
         ItemStack item = player.getEquipment().getItemInMainHand();
 
         BookMeta bookMeta = (BookMeta) item.getItemMeta();
-        bookMeta.setTitle(title);
+        bookMeta.setTitle(name.toString());
         item.setItemMeta(bookMeta);
 
-        player.sendMessage("§eSet the title of the book to \"§r" + title + "§e\".");
+        player.sendMessage("§eSet the title of the book to \"§r" + name.toString() + "§e\".");
     }
 
     /**
@@ -262,17 +270,25 @@ public class ItemManager {
      * Status: completed
      *
      * @param player Affected player.
-     * @param author New author.
+     * @param args   Command arguments.
      */
-    public void bookAuthor(Player player, String author) {
-        author = ChatColor.translateAlternateColorCodes('&', author);
+    public void bookAuthor(Player player, String[] args) {
+        StringBuilder name = new StringBuilder();
+        for (int i = 1; i < args.length; i++) {
+            if (name.length() == 0) {
+                name.append(args[i]);
+            } else {
+                name.append(" ").append(args[i]);
+            }
+        }
+        name = new StringBuilder(ChatColor.translateAlternateColorCodes('&', name.toString()));
         ItemStack item = player.getEquipment().getItemInMainHand();
 
         BookMeta bookMeta = (BookMeta) item.getItemMeta();
-        bookMeta.setAuthor(author);
+        bookMeta.setAuthor(name.toString());
         item.setItemMeta(bookMeta);
 
-        player.sendMessage("§eSet the author of the book to \"§r" + author + "§e\".");
+        player.sendMessage("§eSet the author of the book to \"§r" + name.toString() + "§e\".");
     }
 
     /**
