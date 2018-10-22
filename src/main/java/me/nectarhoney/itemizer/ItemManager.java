@@ -578,7 +578,7 @@ public class ItemManager {
             player.sendMessage("§6/itemizer attr add <§fname§6> <§fstrength§6> [§fslot§6] §8- §eAdd an attribute");
             return;
         }
-        Attributes a = Attributes.get(args[2]);
+        Attributes a = Attributes.get(args[2].toUpperCase());
         if (a == null) {
             player.sendMessage("§cInvalid attribute specified.");
             return;
@@ -594,13 +594,13 @@ public class ItemManager {
         NBTTagList attrmod = getAttrList(nms);
         for (NBTBase anAttrmod : attrmod) {
             NBTTagCompound c = (NBTTagCompound) anAttrmod;
-            if (c.getString("Name").equals(args[2])) {
+            if (c.getString("Name").equals(args[2].toUpperCase())) {
                 player.sendMessage("§cThis item already contains this attribute.");
                 return;
             }
         }
         NBTTagCompound c = new NBTTagCompound();
-        c.set("Name", new NBTTagString(args[2]));
+        c.set("Name", new NBTTagString(args[2].toUpperCase()));
         c.set("AttributeName", new NBTTagString(a.name));
         c.set("Amount", new NBTTagDouble(amount));
         op = a.op;
@@ -645,7 +645,7 @@ public class ItemManager {
         boolean r = false;
         for (NBTBase anAttrmod : attrmod) {
             NBTTagCompound c = (NBTTagCompound) anAttrmod;
-            if (!c.getString("Name").equals(string)) {
+            if (!c.getString("Name").equals(string.toUpperCase())) {
                 nlist.add(anAttrmod);
             } else {
                 r = true;
@@ -677,7 +677,7 @@ public class ItemManager {
         }
         for (NBTBase anAttrmod : attrmod) {
             NBTTagCompound c = (NBTTagCompound) anAttrmod;
-            player.sendMessage(" §8▪ §e" + Attributes.getByMCName(c.getString("AttributeName")) + " §8(§6" + c.getDouble("Amount") + "§8)");
+            player.sendMessage(" §8▪ §e" + Attributes.getByMCName(WordUtils.capitalizeFully(c.getString("AttributeName"))) + " §8(§6" + c.getDouble("Amount") + "§8)");
         }
     }
 
@@ -695,7 +695,7 @@ public class ItemManager {
 
         StringBuilder sb = new StringBuilder();
         for (String s : options) {
-            sb.append("§e").append(s).append(" §8▪ ");
+            sb.append("§e").append(WordUtils.capitalizeFully(s)).append(" §8▪ ");
         }
         sb.setLength(sb.length() - 5);
         player.sendMessage(sb.toString());
@@ -713,7 +713,7 @@ public class ItemManager {
         int j = (arrayOfAttributes = Attributes.values()).length;
         for (int i = 0; i < j; i++) {
             Attributes s = arrayOfAttributes[i];
-            sb.append("§e").append(s).append(" §8▪ ");
+            sb.append("§e").append(WordUtils.capitalizeFully(s.toString())).append(" §8▪ ");
         }
         sb.setLength(sb.length() - 5);
         player.sendMessage(sb.toString());

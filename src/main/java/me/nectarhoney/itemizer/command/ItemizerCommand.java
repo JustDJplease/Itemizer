@@ -239,7 +239,7 @@ public class ItemizerCommand implements CommandExecutor {
                 player.sendMessage("§cYou must be holding a book to modify it.");
                 return true;
             }
-            if (args.length != 2) {
+            if (args.length < 2) {
                 player.sendMessage("§6/" + label + " title <§ftitle§6> §8- §eSets the title of a book");
                 return true;
             }
@@ -254,7 +254,7 @@ public class ItemizerCommand implements CommandExecutor {
                 player.sendMessage("§cYou must be holding a book to modify it.");
                 return true;
             }
-            if (args.length != 2) {
+            if (args.length < 2) {
                 player.sendMessage("§6/" + label + " author <§fname§6> §8- §eSets the author of a book");
                 return true;
             }
